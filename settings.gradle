@@ -16,11 +16,14 @@ pluginManagement {
         maven {
             url = "https://maven.wagyourtail.xyz/snapshots"
         }
+
+
         gradlePluginPortal() {
             content {
                 excludeGroup("org.apache.logging.log4j")
             }
         }
+
     }
 }
 
