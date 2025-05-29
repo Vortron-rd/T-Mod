@@ -62,6 +62,7 @@ public class ItemPizzaPendant extends Item implements IBauble {
         return BaubleType.AMULET;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public EnumRarity getRarity(ItemStack par1ItemStack) {
         return EnumRarity.RARE;
@@ -71,8 +72,9 @@ public class ItemPizzaPendant extends Item implements IBauble {
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         if(!world.isRemote) {
             IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
-            for(int i = 0; i < baubles.getSlots(); i++)
-                if((baubles.getStackInSlot(i) == null || baubles.getStackInSlot(i).isEmpty()) && baubles.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
+            for(int i = 0; i < baubles.getSlots(); i++) {
+                baubles.getStackInSlot(i);
+                if(baubles.getStackInSlot(i).isEmpty() && baubles.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
                     baubles.setStackInSlot(i, player.getHeldItem(hand).copy());
                     if(!player.capabilities.isCreativeMode){
                         player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
@@ -80,8 +82,9 @@ public class ItemPizzaPendant extends Item implements IBauble {
                     onEquipped(player.getHeldItem(hand), player);
                     break;
                 }
+            }
         }
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+        return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
 
     @Override
@@ -98,13 +101,12 @@ public class ItemPizzaPendant extends Item implements IBauble {
 @SubscribeEvent
 public static void InterceptPlayerDeath(LivingDeathEvent event) {
 
-    if (event.getEntity() instanceof EntityPlayer) {
-        EntityPlayer player = (EntityPlayer) event.getEntity();
+    if (event.getEntity() instanceof EntityPlayer player) {
         IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
             if(baubles.getStackInSlot(0).getItem() == item)
-                if((int )(Math.random() * 100 + 1) >= 20) {
+                if((int )(Math.random() * 100 + 1) <= 20) {
                     event.setCanceled(true);
-                    if (event.isCanceled() == true) {
+                    if (event.isCanceled()) {
                         TMod.LOGGER.info("Cancelled Death Event for {}", player.getDisplayNameString());
                         player.setHealth(1F);
                         player.extinguish();

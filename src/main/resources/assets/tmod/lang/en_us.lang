@@ -1,3 +1,6 @@
 #Items
 item.tmod.pizza_pendant.name=Pizza Pendant
+item.tmod.pizza.name=Pizza
+item.tmod.raw_pizza.name=Raw Pizza
+#Menus
 itemGroup.tmod=T-Mod
