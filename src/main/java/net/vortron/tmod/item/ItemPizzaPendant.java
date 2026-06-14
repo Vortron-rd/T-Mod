@@ -107,14 +107,14 @@ public static void InterceptPlayerDeath(LivingDeathEvent event) {
                 if((int )(Math.random() * 100 + 1) <= 20) {
                     event.setCanceled(true);
                     if (event.isCanceled()) {
-                        TMod.LOGGER.info("Cancelled Death Event for {}", player.getDisplayNameString());
+                        TMod.LOGGER.info("Cancelled Death Event for {} Reason : PizzaPendant", player.getDisplayNameString());
                         player.setHealth(1F);
                         player.extinguish();
                         player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 100));
-                        player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 300));
                         FoodStats food = player.getFoodStats();
-                        food.setFoodLevel(5);
-                        food.setFoodSaturationLevel(0);
+                        food.setFoodLevel(20);
+                        food.setFoodSaturationLevel(20);
+                        player.getEntityWorld().playSound(null,player.posX,player.posY,player.posZ,SoundEvents.ENTITY_FIREWORK_TWINKLE,SoundCategory.MASTER,100F,100F);
                         if (!player.world.isRemote) {
                             TextComponentString msg = new TextComponentString("Your pizza pendant disintegrates as it saves your life...");
                             msg.setStyle(msg.getStyle().setColor(TextFormatting.fromColorIndex(7)).setItalic(true));
