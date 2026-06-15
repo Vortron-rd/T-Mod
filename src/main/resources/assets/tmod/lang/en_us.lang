@@ -3,5 +3,10 @@ item.tmod.pizza_pendant.name=Pizza Pendant
 item.tmod.pizza.name=Pizza
 item.tmod.raw_pizza.name=Raw Pizza
 item.tmod.super_leaf.name=Super Leaf
+item.tmod.leaf_sword.name=Leaf Sword
+item.tmod.leaf_pickaxe.name=Leaf Pickaxe
+item.tmod.leaf_spade.name=Leaf Shovel
+item.tmod.leaf_axe.name=Leaf Axe
+item.tmod.leaf_hoe.name=Leaf Hoe
 #Menus
 itemGroup.tmod=T-Mod
