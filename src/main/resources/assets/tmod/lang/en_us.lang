@@ -12,5 +12,7 @@ item.tmod.leaf_helmet.name=Leaf Helmet
 item.tmod.leaf_chestplate.name=Leaf Chestplate
 item.tmod.leaf_leggings.name=Leaf Leggings
 item.tmod.leaf_boots.name=Leaf Boots
+#Blocks (Tiles)
+tile.tmod.water_emerald_ore.name=Water Emerald Ore
 #Menus
 itemGroup.tmod=T-Mod
