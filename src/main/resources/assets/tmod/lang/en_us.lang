@@ -8,5 +8,9 @@ item.tmod.leaf_pickaxe.name=Leaf Pickaxe
 item.tmod.leaf_spade.name=Leaf Shovel
 item.tmod.leaf_axe.name=Leaf Axe
 item.tmod.leaf_hoe.name=Leaf Hoe
+item.tmod.leaf_helmet.name=Leaf Helmet
+item.tmod.leaf_chestplate.name=Leaf Chestplate
+item.tmod.leaf_leggings.name=Leaf Leggings
+item.tmod.leaf_boots.name=Leaf Boots
 #Menus
 itemGroup.tmod=T-Mod
