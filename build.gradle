@@ -29,7 +29,7 @@ assertSubProperties 'use_asset_mover', 'asset_mover_version'
 setDefaultProperty 'generate_sources_jar', true, false
 setDefaultProperty 'generate_javadocs_jar', true, false
 setDefaultProperty 'minecraft_username', true, 'Developer'
-setDefaultProperty 'extra_jvm_args', false, ''
+setDefaultProperty 'extra_jvm_args', true, '-Dforge.logging.console.level=debug -Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP'
 
 version = propertyString('mod_version')
 group = propertyString('root_package')
@@ -57,7 +57,6 @@ configurations {
     implementation.extendsFrom(embed)
     implementation.extendsFrom(contain)
 }
-
 unimined.minecraft {
     version "1.12.2"
 
@@ -72,9 +71,7 @@ unimined.minecraft {
         loader "0.3.4-alpha"
         runs.auth.username = minecraft_username
         runs.all {
-            if (hasProperty("extra_jvm_args")) {
                 jvmArgs(propertyString('extra_jvm_args'))
-            }
             if (propertyBool('enable_foundation_debug')) {
                 systemProperty("foundation.dump", "true")
                 systemProperty("foundation.verbose", "true")
