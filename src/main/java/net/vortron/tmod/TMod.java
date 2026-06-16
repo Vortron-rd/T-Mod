@@ -1,8 +1,9 @@
 package net.vortron.tmod;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.vortron.tmod.world.WorldGen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,8 +20,8 @@ public class TMod {
      */
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-
         LOGGER.info("Hello From {}!", Reference.MOD_NAME);
+        GameRegistry.registerWorldGenerator(new WorldGen(),3);
     }
 
 
