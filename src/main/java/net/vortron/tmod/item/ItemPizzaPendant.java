@@ -101,7 +101,8 @@ public class ItemPizzaPendant extends Item implements IBauble {
 @SubscribeEvent
 public static void InterceptPlayerDeath(LivingDeathEvent event) {
 
-    if (event.getEntity() instanceof EntityPlayer player) {
+    if (event.getEntity() instanceof EntityPlayer) {
+        net.minecraft.entity.player.EntityPlayer player = (EntityPlayer) event.getEntity();
         IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
             if(baubles.getStackInSlot(0).getItem() == item)
                 if((int )(Math.random() * 100 + 1) <= 20) {

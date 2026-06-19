@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.vortron.tmod.CreativeTab;
 import net.vortron.tmod.util.ItemUtil;
 
-import static net.vortron.tmod.material.MaterialLeaf.leafToolMaterial;
+import static net.vortron.tmod.material.Materials.leafToolMaterial;
 
 @Mod.EventBusSubscriber
 public class ItemLeafHoe extends ItemHoe {

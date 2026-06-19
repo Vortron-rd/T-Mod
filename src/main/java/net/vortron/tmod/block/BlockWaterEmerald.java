@@ -2,7 +2,6 @@ package net.vortron.tmod.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -12,41 +11,20 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.vortron.tmod.CreativeTab;
-import net.vortron.tmod.item.ItemWaterEmerald;
 import net.vortron.tmod.util.BlockUtil;
 import net.vortron.tmod.util.ItemUtil;
 
-import java.util.Random;
-
 @Mod.EventBusSubscriber
-public class BlockWaterEmeraldOre extends Block {
-    public BlockWaterEmeraldOre() {
+public class BlockWaterEmerald extends Block {
+    public BlockWaterEmerald() {
         super(Material.ROCK);
         this.setCreativeTab(CreativeTab.TMod);
-        this.setHardness(5F);
-        this.setHarvestLevel("pickaxe",2);
         this.setResistance(5F);
-        BlockUtil.nameBlockId(this, "water_emerald_ore");
+        this.setHardness(3F);
+        BlockUtil.nameBlockId(this, "water_emerald_block");
     }
-    public static final Block block = new BlockWaterEmeraldOre();
+    public static final Block block = new BlockWaterEmerald();
     public static final ItemBlock itemBlock = new ItemBlock(block);
-
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return ItemWaterEmerald.item;
-    }
-    @Override
-    public int quantityDropped(IBlockState state, int fortune, Random random) {
-        if (fortune > 0 ) {
-            int i = random.nextInt(fortune + 2) - 1;
-            if (i < 0) {
-                i = 0;
-            }
-            return i + 1;
-        } else {
-            return 1;
-        }
-    }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -64,7 +42,6 @@ public class BlockWaterEmeraldOre extends Block {
         BlockUtil.setModel(block,0);
         ItemUtil.setModel(itemBlock,0);
     }
-
 
 
 }

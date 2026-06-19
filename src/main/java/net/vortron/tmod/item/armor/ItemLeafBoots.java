@@ -10,13 +10,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.vortron.tmod.CreativeTab;
-import net.vortron.tmod.material.MaterialLeaf;
+import net.vortron.tmod.material.Materials;
 import net.vortron.tmod.util.ItemUtil;
 
 @Mod.EventBusSubscriber
 public class ItemLeafBoots extends ItemArmor {
     public ItemLeafBoots() {
-        super(MaterialLeaf.leafArmorMaterial,0, EntityEquipmentSlot.FEET);
+        super(Materials.leafArmorMaterial,0, EntityEquipmentSlot.FEET);
         this.setCreativeTab(CreativeTab.TMod);
         ItemUtil.nameItemId(this, "leaf_boots");
     }

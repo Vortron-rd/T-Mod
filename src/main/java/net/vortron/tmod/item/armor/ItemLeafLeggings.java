@@ -10,13 +10,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.vortron.tmod.CreativeTab;
-import net.vortron.tmod.material.MaterialLeaf;
+import net.vortron.tmod.material.Materials;
 import net.vortron.tmod.util.ItemUtil;
 
 @Mod.EventBusSubscriber
 public class ItemLeafLeggings extends ItemArmor {
     public ItemLeafLeggings() {
-        super(MaterialLeaf.leafArmorMaterial,0, EntityEquipmentSlot.LEGS);
+        super(Materials.leafArmorMaterial,0, EntityEquipmentSlot.LEGS);
         this.setCreativeTab(CreativeTab.TMod);
         ItemUtil.nameItemId(this, "leaf_leggings");
     }
