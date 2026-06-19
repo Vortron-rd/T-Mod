@@ -28,8 +28,11 @@ public class ItemWaterEmeraldSword extends ItemSword {
 
     @Override
     public boolean hitEntity(ItemStack itemStack, EntityLivingBase target, EntityLivingBase attacker) {
-        if(target.isPotionActive(PotionCoreEffects.POTIONS.get("drown")))
-            target.addPotionEffect(new PotionEffect(PotionCoreEffects.POTIONS.get("drown"),50+target.getActivePotionEffect(PotionCoreEffects.POTIONS.get("drown")).getDuration()) );
+        int x;
+        if(target.isPotionActive(PotionCoreEffects.POTIONS.get("drown"))) {
+            x = target.getActivePotionEffect(PotionCoreEffects.POTIONS.get("drown")).getDuration();
+            target.addPotionEffect(new PotionEffect(PotionCoreEffects.POTIONS.get("drown"), 50+x));
+        }
         else
             target.addPotionEffect(new PotionEffect(PotionCoreEffects.POTIONS.get("drown"),300));
         return super.hitEntity(itemStack, target, attacker);
