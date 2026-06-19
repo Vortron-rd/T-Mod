@@ -1,233 +1,165 @@
-import org.jetbrains.changelog.Changelog
+buildscript {
+    repositories {
+        maven {
+            url = 'https://maven.minecraftforge.net/'
+        }
+        maven {
+            url = 'https://repo.spongepowered.org/maven'
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
 
 plugins {
-    id 'java'
-    id 'java-library'
-    id 'maven-publish'
-    id 'com.gradleup.shadow' version '9.0.0-beta12' // Remove this line and shadowJar task if you don't need shadow
-    id 'org.jetbrains.changelog' version '2.2.1'
-    id 'xyz.wagyourtail.unimined' version '1.3.14'
-
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-apply from: 'gradle/scripts/helpers.gradle'
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
 
-// Early Assertions
-assertProperty 'mod_version'
-assertProperty 'root_package'
-assertProperty 'mod_id'
-assertProperty 'mod_name'
+version = "${mod_version}"
+group = "${mod_id}"
+archivesBaseName = "${mod_name}"
 
-if (propertyBool('generate_reference_class')) {
-    generateReferenceClass()
-}
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
-assertSubProperties 'use_access_transformer', 'access_transformer_locations'
-assertSubProperties 'is_coremod', 'coremod_includes_mod', 'coremod_plugin_class_name'
-assertSubProperties 'use_asset_mover', 'asset_mover_version'
+minecraft {
+    mappings channel: mappings_channel, version: mappings_version
 
-setDefaultProperty 'generate_sources_jar', true, false
-setDefaultProperty 'generate_javadocs_jar', true, false
-setDefaultProperty 'minecraft_username', true, 'Developer'
-setDefaultProperty 'extra_jvm_args', true, '-Dforge.logging.console.level=debug -Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP'
+    runs {
+        client {
+            args "--username=InDev"
 
-version = propertyString('mod_version')
-group = propertyString('root_package')
+            jvmArg "-Dmixin.hotSwap=true"
+            jvmArg "-Dmixin.checks.interfaces=true"
 
-base {
-    archivesName.set(propertyString('mod_id'))
-}
+            workingDirectory project.file('run')
 
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
-    }
-    if (propertyBool('generate_sources_jar')) {
-        withSourcesJar()
-    }
-    if (propertyBool('generate_javadocs_jar')) {
-        withJavadocJar()
-    }
-}
-
-configurations {
-    embed
-    contain
-    implementation.extendsFrom(embed)
-    implementation.extendsFrom(contain)
-}
-unimined.minecraft {
-    version "1.12.2"
-
-    mappings {
-        mcp("stable", "39-1.12")
-    }
-
-    cleanroom {
-        if (propertyBool('use_access_transformer')) {
-            accessTransformer "${rootProject.projectDir}/src/main/resources/" +  propertyString('access_transformer_locations')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
         }
-        loader "0.3.4-alpha"
-        runs.auth.username = minecraft_username
-        runs.all {
-                jvmArgs(propertyString('extra_jvm_args'))
-            if (propertyBool('enable_foundation_debug')) {
-                systemProperty("foundation.dump", "true")
-                systemProperty("foundation.verbose", "true")
-            }
-            return
+
+        server {
+
+            jvmArg "-Dmixin.hotSwap=true"
+            jvmArg "-Dmixin.checks.interfaces=true"
+
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
         }
     }
-
-
 }
+mixin {
+    add sourceSets.main, 'tmod.refmap.json'
+}
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name 'CleanroomMC Maven'
-        url 'https://maven.cleanroommc.com'
+        url = "https://www.cursemaven.com"
     }
-
+    maven {
+        url = 'https://repo.spongepowered.org/maven'
+    }
+    flatDir {
+        dirs 'build/libs'
+    }
+    mavenCentral()
 }
 
-
+configurations {
+    shadeOnly
+}
 
 dependencies {
-    if (propertyBool('use_asset_mover')) {
-        implementation "com.cleanroommc:assetmover:${propertyString('asset_mover_version')}"
-    }
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    if (propertyBool('enable_junit_testing')) {
-        testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
-        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    }
+    // Only these go in the shaded jar
+    shadeOnly 'com.googlecode.soundlibs:mp3spi:1.9.5.4'
+    shadeOnly 'com.googlecode.soundlibs:vorbisspi:1.0.3.3'
+    shadeOnly 'com.googlecode.soundlibs:tritonus-share:0.3.7.4'
 
-
+    // These are compile-time only
+    implementation 'com.googlecode.soundlibs:mp3spi:1.9.5.4'
+    implementation 'com.googlecode.soundlibs:vorbisspi:1.0.3.3'
+    implementation 'com.googlecode.soundlibs:tritonus-share:0.3.7.4'
+    implementation 'curse.maven:ivToolkit-224535:2443253'
+    implementation 'curse.maven:rlTweaker-370420:3846836'
 }
 apply from: 'gradle/scripts/dependencies.gradle'
 
 processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", minecraft_version
 
-    inputs.property 'mod_id', propertyString('mod_id')
-    inputs.property 'mod_name', propertyString('mod_name')
-    inputs.property 'mod_version', propertyString('mod_version')
-    inputs.property 'mod_description', propertyString('mod_description')
-    inputs.property 'mod_authors', "${propertyStringList('mod_authors', ',').join(', ')}"
-    inputs.property 'mod_credits', propertyString('mod_credits')
-    inputs.property 'mod_url', propertyString('mod_url')
-    inputs.property 'mod_update_json', propertyString('mod_update_json')
-    inputs.property 'mod_logo_path', propertyString('mod_logo_path')
-
-    def filterList = ['mcmod.info', 'pack.mcmeta']
-
-    filesMatching(filterList) { fcd ->
-        fcd.expand(
-                'mod_id': propertyString('mod_id'),
-                'mod_name': propertyString('mod_name'),
-                'mod_version': propertyString('mod_version'),
-                'mod_description': propertyString('mod_description'),
-                'mod_authors': "${propertyStringList('mod_authors', ',').join(', ')}",
-                'mod_credits': propertyString('mod_credits'),
-                'mod_url': propertyString('mod_url'),
-                'mod_update_json': propertyString('mod_update_json'),
-                'mod_logo_path': propertyString('mod_logo_path'),
-        )
+    filesMatching('mcmod.info') {
+        expand 'mod_id': mod_id, 'mod_name': mod_name, 'version': project.version,
+                'mcversion': minecraft_version, 'mod_description': mod_description,
+                'mod_author': mod_author
     }
+}
 
-    rename '(.+_at.cfg)', 'META-INF/$1'
+configurations.all {
+    resolutionStrategy {
+        force 'org.ow2.asm:asm:5.2' // Use an older, compatible ASM version
+    }
+}
+
+
+shadowJar {
+    configurations = [project.configurations.shadeOnly]
+    archiveClassifier.set('')
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    mergeServiceFiles()
+}
+
+// Additionally, exclude problematic files during dependency resolution
+configurations {
+    runtimeClasspath {
+        exclude group: 'org.ow2.asm', module: 'asm-util'
+        exclude group: 'org.ow2.asm', module: 'asm-analysis'
+        exclude group: 'org.ow2.asm', module: 'asm-tree'
+        exclude group: 'org.ow2.asm', module: 'asm'
+        // Exclude unwanted dependencies from runtimeClasspath
+        exclude group: 'org.codehaus.plexus', module: 'plexus-utils'
+        // Add more exclusions here if needed, e.g.:
+        // exclude group: 'some.other.group', module: 'some-library'
+        exclude group: 'org.scala-lang', module: 'scala-library'
+        exclude group: 'com.sun.jna', module: 'sun'
+        exclude group: "net.java.dev.jna", module: "jna"
+        exclude group: "com.sun.jna", module: "jna"
+
+    }
 }
 
 jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : mod_name,
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : mod_name,
+                "Implementation-Version"  : mod_version,
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "FMLCorePluginContainsFMLMod": "true",
+                "ForceLoadAsMod": "true", // Comment out for dev environment, uncomment for build
+                'FMLAT': 'tmod_at.cfg',  // Point to the access transformer config
+        ])
+    }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    if (configurations.contain.size() > 0) {
-        into('/') {
-            from configurations.contain
-        }
-    }
-    doFirst{
-        manifest {
-            def attribute_map = [:]
-            attribute_map['ModType'] = "CRL"
-            if (configurations.contain.size() > 0) {
-                attribute_map['ContainedDeps'] = configurations.contain.collect { it.name }.join(' ')
-                attribute_map['NonModDeps'] = true
-            }
-            if (propertyBool('is_coremod')) {
-                attribute_map['FMLCorePlugin'] = propertyString('coremod_plugin_class_name')
-                if (propertyBool('coremod_includes_mod')) {
-                    attribute_map['FMLCorePluginContainsFMLMod'] = true
-                }
-            }
-            if (propertyBool('use_access_transformer')) {
-                attribute_map['FMLAT'] = propertyString('access_transformer_locations')
-            }
-            attributes(attribute_map)
-        }
-    }
-    if (propertyBool('enable_shadow')) {
-        finalizedBy(shadowJar)
-    }
 }
 
-tasks.remapJar {
-    doFirst {
-        logging.captureStandardOutput LogLevel.INFO
-    }
-    doLast {
-        logging.captureStandardOutput LogLevel.QUIET
-    }
+reobf {
+    shadowJar {}
 }
 
-shadowJar {
-    configurations = [project.configurations.shadow]
-    archiveClassifier = "shadow"
-}
+build.dependsOn shadowJar, reobfShadowJar
+jar.enabled = true
 
-compileTestJava {
-    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_21
-}
-
-test {
-    useJUnitPlatform()
-    javaLauncher.set(javaToolchains.launcherFor {
-        languageVersion = JavaLanguageVersion.of(21)
-    })
-    if (propertyBool('show_testing_output')) {
-        testLogging {
-            showStandardStreams = true
-        }
-    }
-}
-
-String parserChangelog() {
-    if (!file('CHANGELOG.md').exists()) {
-        throw new GradleException('publish_with_changelog is true, but CHANGELOG.md does not exist in the workspace!')
-    }
-    String parsedChangelog = changelog.renderItem(
-            changelog.get(propertyString('mod_version')).withHeader(false).withEmptySections(false),
-            Changelog.OutputType.MARKDOWN)
-    if (parsedChangelog.isEmpty()) {
-        throw new GradleException('publish_with_changelog is true, but the changelog for the latest version is empty!')
-    }
-    return parsedChangelog
-}
-
-def generateReferenceClass() {
-    var target = new File("${rootProject.projectDir}/src/main/java/${root_package.replace('.', '/')}/${mod_id}/Reference.java")
-    var template = new File("${rootProject.projectDir}/template/Reference.java")
-    var replaceMap = [$package : "${root_package}.${mod_id}", $mod_id : mod_id, $mod_name : mod_name, $mod_version : mod_version]
-    target.withWriter { var writer ->
-        template.eachLine { var line ->
-            replaceMap.each {if (line.contains(it.key)) line = line.replace(it.key, it.value)}
-            writer.write(line + "\n");
-        }
-    }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
-
-apply from: 'gradle/scripts/publishing.gradle'
-apply from: 'gradle/scripts/extra.gradle'
+jar.finalizedBy('reobfJar')
