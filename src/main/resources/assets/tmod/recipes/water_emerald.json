@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "tmod:water_emerald",
+    "count": 9
+  },
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockWaterEmerald"
+    }
+  ],
+  "type": "forge:ore_shapeless",
+  "key": {
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "gemWaterEmerald"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "tmod:leaf_pickaxe"
+  },
+  "pattern": [
+    "lll",
+    " s ",
+    " s "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "l": {
+      "item": "tmod:super_leaf"
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore":  "stickWood"
+    }
+  }
+}

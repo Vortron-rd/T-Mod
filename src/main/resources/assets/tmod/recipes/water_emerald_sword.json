@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "tmod:water_emerald_sword"
+  },
+  "pattern": [
+    " w ",
+    "pwp",
+    " s "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "gemWaterEmerald"
+    },
+    "p": {
+      "item": "minecraft:prismarine_crystals"
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore":  "stickWood"
+    }
+  }
+}
