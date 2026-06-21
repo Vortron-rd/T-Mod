@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.vortron.tmod.Reference;
+import net.vortron.tmod.TMod;
 
 public class BlockUtil {
     public static void setModel(net.minecraft.block.Block block, int meta) {
@@ -12,7 +12,7 @@ public class BlockUtil {
                 new ModelResourceLocation(block.getRegistryName(), "inventory"));
     }
     public static void nameBlockId(Block block, String name) {
-        block.setRegistryName(Reference.MOD_ID, name).setTranslationKey(Reference.MOD_ID + "." + name);
+        block.setRegistryName(TMod.MOD_ID, name).setTranslationKey(TMod.MOD_ID + "." + name);
     }
 
 

@@ -9,7 +9,7 @@ import net.vortron.tmod.item.ItemPizzaPendant;
 public class CreativeTab extends CreativeTabs {
 
     public CreativeTab() {
-        super(Reference.MOD_ID);
+        super(net.vortron.tmod.TMod.MOD_ID);
     }
 
     @SideOnly(Side.CLIENT)

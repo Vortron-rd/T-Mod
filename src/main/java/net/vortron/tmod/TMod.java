@@ -7,10 +7,13 @@ import net.vortron.tmod.world.WorldGen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@Mod(modid = TMod.MOD_ID, name = TMod.MOD_NAME, version = TMod.VERSION)
 public class TMod {
 
-    public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_NAME);
+    public static final String MOD_NAME = "T-Mod";
+    public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
+    public static final String MOD_ID = "tmod";
+    public static final String VERSION = "0.0.1-alpha";
 
 
     /**
@@ -20,7 +23,7 @@ public class TMod {
      */
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        LOGGER.info("Hello From {}!", Reference.MOD_NAME);
+        LOGGER.info("Hello From {}!", MOD_NAME);
         GameRegistry.registerWorldGenerator(new WorldGen(),3);
     }
 
