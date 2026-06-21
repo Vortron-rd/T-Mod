@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "tmod:compressed_iron_block",
+    "count": 9
+  },
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockDoubleCompressedIron",
+      "count": 1
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}
