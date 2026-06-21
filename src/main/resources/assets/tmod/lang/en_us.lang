@@ -17,5 +17,26 @@ item.tmod.water_emerald_sword.name=Water Emerald Sword
 #Blocks (Tiles)
 tile.tmod.water_emerald_ore.name=Water Emerald Ore
 tile.tmod.water_emerald_block.name=Water Emerald Block
+tile.tmod.compressed_iron_block.name=Compressed Iron Block
+tile.tmod.double_compressed_iron_block.name=Double Compressed Iron Block
+tile.tmod.triple_compressed_iron_block.name=Triple Compressed Iron Block
+tile.tmod.compressed_gold_block.name=Compressed Gold Block
+tile.tmod.double_compressed_gold_block.name=Double Compressed Gold Block
+tile.tmod.triple_compressed_gold_block.name=Triple Compressed Gold Block
+tile.tmod.compressed_diamond_block.name=Compressed Diamond Block
+tile.tmod.double_compressed_diamond_block.name=Double Compressed Diamond Block
+tile.tmod.triple_compressed_diamond_block.name=Triple Compressed Diamond Block
+
+
 #Menus
 itemGroup.tmod=T-Mod
+
+#Advancements
+tmod.advancements.root.title=T-Mod
+tmod.advancements.root.description=Begin your journey unto... pizza?
+tmod.advancements.triple_compressed_iron_block.title=Heavy
+tmod.advancements.triple_compressed_iron_block.description=Obtain a Triple Compressed Iron Block.
+tmod.advancements.triple_compressed_gold_block.title=A Pirate's Greed
+tmod.advancements.triple_compressed_gold_block.description=Obtain a Triple Compressed Gold Block.
+tmod.advancements.triple_compressed_diamond_block.title=Mikkle Tickle Luck
+tmod.advancements.triple_compressed_diamond_block.description=Obtain a Triple Compressed Diamond Block.

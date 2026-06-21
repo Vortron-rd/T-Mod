@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "tmod:double_compressed_diamond_block",
+    "count": 9
+  },
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockTripleCompressedDiamond",
+      "count": 1
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

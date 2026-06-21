@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "tmod:double_compressed_diamond_block"
+  },
+  "pattern": [
+    "www",
+    "www",
+    "www"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "blockCompressedDiamond"
+    }
+  }
+}

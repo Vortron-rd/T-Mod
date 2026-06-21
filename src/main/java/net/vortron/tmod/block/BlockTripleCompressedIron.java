@@ -16,15 +16,15 @@ import net.vortron.tmod.util.BlockUtil;
 import net.vortron.tmod.util.ItemUtil;
 
 @Mod.EventBusSubscriber
-public class BlockWaterEmerald extends Block {
-    public BlockWaterEmerald() {
+public class BlockTripleCompressedIron extends Block {
+    public BlockTripleCompressedIron() {
         super(Material.ROCK);
         this.setCreativeTab(CreativeTab.TMod);
-        this.setResistance(5F);
-        this.setHardness(3F);
-        BlockUtil.nameBlockId(this, "water_emerald_block");
+        this.setResistance(6F);
+        this.setHardness(10F);
+        BlockUtil.nameBlockId(this, "triple_compressed_iron_block");
     }
-    public static final Block block = new BlockWaterEmerald();
+    public static final Block block = new BlockTripleCompressedIron();
     public static final ItemBlock itemBlock = new ItemBlock(block);
 
     @SubscribeEvent
@@ -35,7 +35,8 @@ public class BlockWaterEmerald extends Block {
     public static void registerItems(RegistryEvent.Register<Item> event) {
         itemBlock.setRegistryName(block.getRegistryName());
         event.getRegistry().register(itemBlock);
-        OreDictionary.registerOre("blockWaterEmerald",itemBlock);
+        OreDictionary.registerOre("blockTripleCompressedIron",itemBlock);
+
     }
 
     @SubscribeEvent
