@@ -1,9 +1,12 @@
 package net.vortron.tmod.item;
 
 import com.tmtravlr.potioncore.PotionCoreEffects;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +16,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.vortron.tmod.CreativeTab;
 import net.vortron.tmod.util.ItemUtil;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber
 public class ItemWaterEmerald extends ItemFood {
@@ -35,5 +40,10 @@ public class ItemWaterEmerald extends ItemFood {
         ItemUtil.setModel(item, 0);
     }
 
-
+    @Override
+    public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+        tooltip.add("Ingestion not recommended.");
+    }
 }
