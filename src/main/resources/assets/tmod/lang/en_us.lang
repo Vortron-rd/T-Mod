@@ -14,6 +14,10 @@ item.tmod.leaf_leggings.name=Leaf Leggings
 item.tmod.leaf_boots.name=Leaf Boots
 item.tmod.water_emerald.name=Water Emerald
 item.tmod.water_emerald_sword.name=Water Emerald Sword
+item.tmod.cactus_helmet.name=Cactus Helmet
+item.tmod.cactus_chestplate.name=Cactus Chestplate
+item.tmod.cactus_leggings.name=Cactus Leggings
+item.tmod.cactus_boots.name=Cactus Boots
 #Blocks (Tiles)
 tile.tmod.water_emerald_ore.name=Water Emerald Ore
 tile.tmod.water_emerald_block.name=Water Emerald Block
