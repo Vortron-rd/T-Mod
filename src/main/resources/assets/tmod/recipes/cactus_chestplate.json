@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "tmod:cactus_chestplate"
+  },
+  "pattern": [
+    "l l",
+    "lll",
+    "lll"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "l": {
+      "item": "minecraft:cactus"
+    }
+  }
+}

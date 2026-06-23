@@ -14,6 +14,7 @@ item.tmod.leaf_leggings.name=Leaf Leggings
 item.tmod.leaf_boots.name=Leaf Boots
 item.tmod.water_emerald.name=Water Emerald
 item.tmod.water_emerald_sword.name=Water Emerald Sword
+item.tmod.cactus_club.name=Cactus Club
 item.tmod.cactus_helmet.name=Cactus Helmet
 item.tmod.cactus_chestplate.name=Cactus Chestplate
 item.tmod.cactus_leggings.name=Cactus Leggings
@@ -30,7 +31,7 @@ tile.tmod.triple_compressed_gold_block.name=Triple Compressed Gold Block
 tile.tmod.compressed_diamond_block.name=Compressed Diamond Block
 tile.tmod.double_compressed_diamond_block.name=Double Compressed Diamond Block
 tile.tmod.triple_compressed_diamond_block.name=Triple Compressed Diamond Block
-
+tile.tmod.cacticrafter.name=Cacticrafter
 
 #Menus
 itemGroup.tmod=T-Mod
@@ -43,4 +44,4 @@ tmod.advancements.triple_compressed_iron_block.description=Obtain a Triple Compr
 tmod.advancements.triple_compressed_gold_block.title=A Pirate's Greed
 tmod.advancements.triple_compressed_gold_block.description=Obtain a Triple Compressed Gold Block.
 tmod.advancements.triple_compressed_diamond_block.title=Mikkle Tickle Luck
-tmod.advancements.triple_compressed_diamond_block.description=Obtain a Triple Compressed Diamond Block.
+tmod.advancements.triple_compressed_diamond_block.description=Obtain a Triple Compressed Diamond Block.tile.cacticrafter.name=Cacticraftertile.cacticrafter.name=Cacticrafter

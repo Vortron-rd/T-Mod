@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "tmod:cacticrafter"
+  },
+  "pattern": [
+    "cc",
+    "cc"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "item": "minecraft:cactus"
+    }
+  }
+}

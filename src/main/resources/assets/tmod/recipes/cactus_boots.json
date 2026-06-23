@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "tmod:cactus_boots"
+  },
+  "pattern": [
+    "   ",
+    "l l",
+    "l l"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "l": {
+      "item": "minecraft:cactus"
+    }
+  }
+}

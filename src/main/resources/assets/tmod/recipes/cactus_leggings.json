@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "tmod:cactus_leggings"
+  },
+  "pattern": [
+    "lll",
+    "l l",
+    "l l"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "l": {
+      "item": "minecraft:cactus"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "tmod:cacticrafter"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

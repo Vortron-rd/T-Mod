@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "tmod:cactus_helmet"
+  },
+  "pattern": [
+    "lll",
+    "l l",
+    "   "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "l": {
+      "item": "minecraft:cactus"
+    }
+  }
+}
