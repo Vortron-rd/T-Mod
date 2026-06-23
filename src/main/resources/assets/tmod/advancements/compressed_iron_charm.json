@@ -1,26 +1,26 @@
 {
   "display": {
     "icon": {
-      "item": "tmod:triple_compressed_diamond_block"
+      "item": "tmod:compressed_iron_charm"
     },
     "title": {
-      "translate": "tmod.advancements.triple_compressed_diamond_block.title"
+      "translate": "tmod.advancements.compressed_iron_charm.title"
     },
     "description": {
-      "translate": "tmod.advancements.triple_compressed_diamond_block.description"
+      "translate": "tmod.advancements.compressed_iron_charm.description"
     },
     "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
     "show_toast": true,
     "announce_to_chat": true
   },
-  "parent": "tmod:root",
+  "parent": "tmod:triple_compressed_iron_block",
   "criteria": {
     "get_triple_compressed_diamond_block": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "tmod:triple_compressed_diamond_block"
+            "item": "tmod:compressed_iron_charm"
           }
         ]
       }

@@ -40,19 +40,19 @@ public class BlockTripleCompressedDiamond extends Block {
             return new IRarity() {
                 @Override
                 public TextFormatting getColor() {
-                    return TextFormatting.LIGHT_PURPLE;
+                    return EnumRarity.RARE.color;
                 }
 
                 @Override
                 public String getName() {
-                    return "EPIC";
+                    return EnumRarity.RARE.name();
                 }
             };
         }
 
         @Override
         public EnumRarity getRarity(ItemStack stack) {
-            return EnumRarity.EPIC;
+            return EnumRarity.RARE;
         }
 
     }

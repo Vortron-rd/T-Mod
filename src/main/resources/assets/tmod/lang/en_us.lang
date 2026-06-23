@@ -19,6 +19,10 @@ item.tmod.cactus_helmet.name=Cactus Helmet
 item.tmod.cactus_chestplate.name=Cactus Chestplate
 item.tmod.cactus_leggings.name=Cactus Leggings
 item.tmod.cactus_boots.name=Cactus Boots
+item.tmod.compressed_iron_charm.name=Compressed Iron Charm
+item.tmod.compressed_gold_charm.name=Compressed Gold Charm
+item.tmod.compressed_diamond_charm.name=Compressed Diamond Charm
+
 #Blocks (Tiles)
 tile.tmod.water_emerald_ore.name=Water Emerald Ore
 tile.tmod.water_emerald_block.name=Water Emerald Block
@@ -44,4 +48,10 @@ tmod.advancements.triple_compressed_iron_block.description=Obtain a Triple Compr
 tmod.advancements.triple_compressed_gold_block.title=A Pirate's Greed
 tmod.advancements.triple_compressed_gold_block.description=Obtain a Triple Compressed Gold Block.
 tmod.advancements.triple_compressed_diamond_block.title=Mikkle Tickle Luck
-tmod.advancements.triple_compressed_diamond_block.description=Obtain a Triple Compressed Diamond Block.tile.cacticrafter.name=Cacticraftertile.cacticrafter.name=Cacticrafter
+tmod.advancements.triple_compressed_diamond_block.description=Obtain a Triple Compressed Diamond Block.
+tmod.advancements.compressed_iron_charm.title=How can you even carry this?
+tmod.advancements.compressed_gold_charm.title=Egyptian Style
+tmod.advancements.compressed_diamond_charm.title=Expensive Fashion Statement
+tmod.advancements.compressed_iron_charm.description=Obtain a Compressed Iron Charm.
+tmod.advancements.compressed_gold_charm.description=Obtain a Compressed Gold Charm.
+tmod.advancements.compressed_diamond_charm.description=Obtain a Compressed Diamond Charm.
