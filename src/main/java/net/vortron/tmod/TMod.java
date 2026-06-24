@@ -18,7 +18,7 @@ public class TMod {
     public static final String MOD_ID = "tmod";
     public static final String VERSION = "0.0.1-alpha";
     @Mod.Instance(MOD_ID)
-    public static TMod MOD_INSTANCE;
+    public static TMod instance;
 
     /**
      * <a href="https://cleanroommc.com/wiki/forge-mod-development/event#overview">
@@ -33,7 +33,7 @@ public class TMod {
     }
     @Mod.EventHandler
     public void postInit(FMLInitializationEvent event) {
-        NetworkRegistry.INSTANCE.registerGuiHandler(MOD_INSTANCE, new GuiHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
     }
 
 

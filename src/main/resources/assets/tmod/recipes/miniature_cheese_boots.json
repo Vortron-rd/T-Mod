@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "tmod:miniature_cheese_boots"
+  },
+  "pattern": [
+    "   ",
+    "c c",
+    "c c"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "item": "tmod:divine_cheese"
+    }
+  }
+}

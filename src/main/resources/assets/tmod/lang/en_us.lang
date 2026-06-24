@@ -22,6 +22,8 @@ item.tmod.cactus_boots.name=Cactus Boots
 item.tmod.compressed_iron_charm.name=Compressed Iron Charm
 item.tmod.compressed_gold_charm.name=Compressed Gold Charm
 item.tmod.compressed_diamond_charm.name=Compressed Diamond Charm
+item.tmod.divine_cheese.name=Divine Cheese
+item.tmod.miniature_cheese_boots.name=Miniature Cheese Boots
 
 #Blocks (Tiles)
 tile.tmod.water_emerald_ore.name=Water Emerald Ore
@@ -37,6 +39,8 @@ tile.tmod.double_compressed_diamond_block.name=Double Compressed Diamond Block
 tile.tmod.triple_compressed_diamond_block.name=Triple Compressed Diamond Block
 tile.tmod.cacticrafter.name=Cacticrafter
 
+#Entities
+entity.tmod.cheesus_crust.name=Cheesus Crust
 #Menus
 itemGroup.tmod=T-Mod
 

@@ -65,12 +65,12 @@ public class BlockCacticrafter extends Block {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            player.openGui(TMod.MOD_INSTANCE, 0, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(TMod.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
             player.addStat(StatList.CRAFTING_TABLE_INTERACTION);
             TMod.LOGGER.info("server called");
         }
         else {
-            player.openGui(TMod.MOD_INSTANCE, 0, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(TMod.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
             TMod.LOGGER.info("client called");
 
         }
