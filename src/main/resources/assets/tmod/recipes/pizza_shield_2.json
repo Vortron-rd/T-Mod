@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "tmod:pizza_shield"
+  },
+  "pattern": [
+    "   ",
+    " p ",
+    " p "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "p": {
+      "type": "forge:ore_dict",
+      "ore": "foodPizza"
+    }
+  }
+}

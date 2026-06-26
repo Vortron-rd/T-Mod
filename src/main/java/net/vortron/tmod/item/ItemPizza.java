@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import net.vortron.tmod.CreativeTab;
 import net.vortron.tmod.util.ItemUtil;
 
@@ -26,6 +27,7 @@ public class ItemPizza extends ItemFood {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(net.vortron.tmod.item.ItemPizza.item);
+        OreDictionary.registerOre("foodPizza",item);
     }
 
     @SubscribeEvent

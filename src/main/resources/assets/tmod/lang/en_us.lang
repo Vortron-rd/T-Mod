@@ -24,6 +24,7 @@ item.tmod.compressed_gold_charm.name=Compressed Gold Charm
 item.tmod.compressed_diamond_charm.name=Compressed Diamond Charm
 item.tmod.divine_cheese.name=Divine Cheese
 item.tmod.miniature_cheese_boots.name=Miniature Cheese Boots
+item.tmod.pizza_shield.name=Pizza Shield
 
 #Blocks (Tiles)
 tile.tmod.water_emerald_ore.name=Water Emerald Ore
